@@ -25,6 +25,15 @@ class ExampleBlock extends Block
 
 		$example
 			->setLocation('block', '==', 'acf/example') // ważne!
+			->addText('block-title', [
+				'label' => 'Tytuł',
+				'required' => 0,
+			])
+			->addAccordion('accordion1', [
+				'label' => 'Zaawansowane opcje',
+				'open' => false,
+				'multi_expand' => true,
+			])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array', // lub 'url', lub 'id'
@@ -36,6 +45,10 @@ class ExampleBlock extends Block
 				'tabs' => 'all', // 'visual', 'text', 'all'
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
+			])
+			->addLink('cta', [
+				'label' => 'Przycisk',
+				'return_format' => 'array',
 			]);
 
 		return $example;
@@ -47,6 +60,7 @@ class ExampleBlock extends Block
 			'image' => get_field('image'),
 			'title' => get_field('title'),
 			'content' => get_field('content'),
+			'cta' => get_field('cta'),
 		];
 	}
 }

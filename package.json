@@ -23,5 +23,10 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.6",
     "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.9",
+    "gsap": "^3.13.0",
+    "swiper": "^11.2.6"
   }
 }

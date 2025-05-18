@@ -26,6 +26,19 @@ class ThemeServiceProvider extends SageServiceProvider
 	{
 		parent::boot();
 
+		// USATAWIENIA MOTYWU
+        add_action('acf/init', function () {
+            if (function_exists('acf_add_options_page')) {
+                acf_add_options_page([
+                    'page_title' => 'Ustawienia motywu',
+                    'menu_title' => 'Ustawienia motywu',
+                    'menu_slug'  => 'theme-settings',
+                    'capability' => 'edit_posts',
+                    'redirect'   => false,
+                ]);
+            }
+        });
+
 		add_filter('sage/acf-composer/blocks', function () {
 			return [ExampleBlock::class];
 		});

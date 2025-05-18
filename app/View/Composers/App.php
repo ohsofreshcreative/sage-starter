@@ -12,11 +12,22 @@ class App extends Composer
      * @var array
      */
     protected static $views = [
-        '*',
+        '*', // działa globalnie
     ];
 
     /**
-     * Retrieve the site name.
+     * Dane dostępne we wszystkich widokach Blade.
+     */
+    public function with(): array
+    {
+        return [
+            'siteName' => $this->siteName(),
+            'logo' => get_field('logo', 'option'),
+        ];
+    }
+
+    /**
+     * Zwraca nazwę strony.
      */
     public function siteName(): string
     {

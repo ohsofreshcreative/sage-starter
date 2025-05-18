@@ -1,21 +1,29 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 import laravel from 'laravel-vite-plugin'
-import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin';
+import { wordpressPlugin, wordpressThemeJson } from '@roots/vite-plugin'
 
 export default defineConfig({
-server: {
-    host: 'localhost',
+  server: {
+    host: 'shadowcontrol.local', // 🔁 <-- zmiana z 'localhost'
     port: 5173,
     strictPort: true,
+    cors: true,
+    origin: 'http://shadowcontrol.local',
+	origin: 'http://shadowcontrol.local:5173',
+
     hmr: {
-      host: 'localhost',
+      protocol: 'ws',
+      host: 'shadowcontrol.local', // 🔁 <-- tu też!
+      port: 5173,
     },
   },
-  base: '/app/themes/shadow/public/build/',
+
+  base: '/build/', // 🔁 zgodne z tym, co generuje @vite()
 
   plugins: [
     tailwindcss(),
+
     laravel({
       input: [
         'resources/css/app.css',
@@ -28,14 +36,13 @@ server: {
 
     wordpressPlugin(),
 
-    // Generate the theme.json file in the public/build/assets directory
-    // based on the Tailwind config and the theme.json file from base theme folder
     wordpressThemeJson({
       disableTailwindColors: false,
       disableTailwindFonts: false,
       disableTailwindFontSizes: false,
     }),
   ],
+
   resolve: {
     alias: {
       '@scripts': '/resources/js',
