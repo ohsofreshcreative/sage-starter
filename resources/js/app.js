@@ -31,8 +31,6 @@ import Alpine from 'alpinejs'
 window.Alpine = Alpine
 Alpine.start()
 
-
-
 /*--- GSAP ---*/
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -82,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/*--- SWIPER ---*/
 
 document.addEventListener('DOMContentLoaded', () => {
   const swipers = document.querySelectorAll('.swiper');
